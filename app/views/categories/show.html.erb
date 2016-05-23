@@ -1,0 +1,28 @@
+<h2>Welcome to the <%= @category.name %> page!</h2>
+  <ul>
+    <% @posts.each do |post| %>
+      <li><%= link_to post.title, category_post_path(post.category_id, post) %></li>
+    <%end%>
+  </ul>
+
+<% if current_user %>
+  <%= form_for([@category, @post]) do |f| %>
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    </p>
+    <p>
+      <%= f.label :price %><br>
+      <%= f.text_field :price %>
+    </p>
+    <%= f.hidden_field :seller_id, :value => current_user.id %>
+    <%= f.hidden_field :category_id, :value => @category.id %>
+    <%= f.submit :value => "Post Item" %>
+  <% end %>
+<% else %>
+  <h3><%= link_to "Login", "/sessions/new" %> or <%= link_to "Register", "/users/new" %> to post an item for sale!!!</h3>
+<% end %>
