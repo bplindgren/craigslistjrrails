@@ -1,0 +1,8 @@
+<h1>Welcome to Craigslist, Jr.<h1>
+<h3>Buy some stuff!!!</h3>
+
+<ul>
+  <% @categories.each do |category| %>
+    <li><%= link_to category.name, category_path(category) %></li>
+  <%end%>
+</ul>

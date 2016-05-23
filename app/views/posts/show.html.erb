@@ -1,0 +1,10 @@
+<h2>Buy this <%= @post.title %></h2>
+Price: $<%=@post.price%><br>
+<%=@post.description%><br><br>
+Seller: <%= @post.seller.username.capitalize %>
+
+
+<% if is_owner? %>
+  <%= link_to "Edit Post", edit_category_post_path %>
+  <%= link_to "Delete Post", category_post_path(@post.category, @post), method: :delete %>
+<% end %>

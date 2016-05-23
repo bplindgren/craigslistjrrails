@@ -1,0 +1,12 @@
+<h2>Welcome to your show page, <%= @user.username %>!!!</h2>
+
+<h3>Here are the items you have for sale:</h3>
+<br>
+
+<ul>
+  <% @user.posts.each do |post| %>
+    <h4>Item: <%= post.title %></h4>
+    <p>Price: $<%= post.price%></p>
+    <p>Description: <%= post.description %></p><br>
+  <% end %>
+</ul>
