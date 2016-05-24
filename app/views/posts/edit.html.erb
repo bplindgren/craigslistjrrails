@@ -1,4 +1,4 @@
-<%= form_for([@category, @post]) do |f| %>
+<%= form_for @post, url: "/categories/#{@post.category_id}/posts/#{@post.id}", method: :patch do |f| %>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
